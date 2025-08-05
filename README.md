@@ -38,7 +38,7 @@ It helps individuals track their income, expenses, budgets, and financial goals 
 
 ### 📦 Prerequisites
 - Java 17
-- Maven 3.8+
+- Maven 3.9+
 - PostgreSQL
 
 ### 🛠 Setup
