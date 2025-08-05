@@ -44,6 +44,6 @@ It helps individuals track their income, expenses, budgets, and financial goals 
 ### 🛠 Setup
 
 ```bash
-git clone https://github.com/your-username/kinari.git
+git clone https://github.com/rafelck/kinari-spring-boot
 cd kinari
 cp src/main/resources/application.yml.example src/main/resources/application.yml
