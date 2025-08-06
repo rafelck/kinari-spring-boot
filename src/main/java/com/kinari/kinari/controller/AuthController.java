@@ -1,8 +1,8 @@
 package com.kinari.kinari.controller;
 
-import com.kinari.kinari.security.JwtUtil;
 import com.kinari.kinari.dto.RegisterUserReqeust;
 import com.kinari.kinari.entity.User;
+import com.kinari.kinari.security.JwtUtil;
 import com.kinari.kinari.service.UserDetailsServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +46,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterUserReqeust request) {
+    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterUserReqeust request) {
         UserDetailsServiceImpl userDetailsServiceImpl = (UserDetailsServiceImpl) userDetailsService;
         boolean result = userDetailsServiceImpl.registerUser(
                 request.getUsername(),
@@ -55,10 +55,13 @@ public class AuthController {
         );
 
         if (result) {
-            return ResponseEntity.ok("User registered successfully");
+            return ResponseEntity.ok(Map.of(
+                    "message", "User registered successfully"
+            ));
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Username already exists");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    Map.of("message", "Username already exists")
+            );
         }
     }
 
