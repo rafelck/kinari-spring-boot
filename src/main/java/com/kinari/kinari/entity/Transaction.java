@@ -3,6 +3,7 @@ package com.kinari.kinari.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,7 +12,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal amount;
+    private BigInteger amount;
 
     @ManyToOne
     @JoinColumn(name = "category_trsanction_id")
@@ -25,6 +26,10 @@ public class Transaction {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     public Long getId() {
         return id;
     }
@@ -33,11 +38,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
+    public BigInteger getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(BigInteger amount) {
         this.amount = amount;
     }
 
@@ -71,5 +76,13 @@ public class Transaction {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

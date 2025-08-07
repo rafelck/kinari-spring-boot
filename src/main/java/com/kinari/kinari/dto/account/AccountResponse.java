@@ -1,9 +1,11 @@
 package com.kinari.kinari.dto.account;
 
+import java.math.BigInteger;
+
 public class AccountResponse {
     private Long id;
     private String name;
-    private Double balance;
+    private BigInteger balance;
     private Long userId;
 
     public Long getId() {
@@ -22,11 +24,11 @@ public class AccountResponse {
         this.name = name;
     }
 
-    public Double getBalance() {
+    public BigInteger getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigInteger balance) {
         this.balance = balance;
     }
 

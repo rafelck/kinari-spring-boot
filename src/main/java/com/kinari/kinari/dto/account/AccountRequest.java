@@ -1,13 +1,11 @@
 package com.kinari.kinari.dto.account;
 
+import java.math.BigInteger;
+
 public class AccountRequest {
     private String name;
-    private Double balance;
+    private BigInteger balance;
 
-    public AccountRequest(String name, Double balance) {
-        this.name = name;
-        this.balance = balance;
-    }
 
     public String getName() {
         return name;
@@ -17,11 +15,11 @@ public class AccountRequest {
         this.name = name;
     }
 
-    public Double getBalance() {
+    public BigInteger getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigInteger balance) {
         this.balance = balance;
     }
 }

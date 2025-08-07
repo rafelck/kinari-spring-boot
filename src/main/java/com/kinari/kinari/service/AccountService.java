@@ -7,6 +7,7 @@ import com.kinari.kinari.entity.User;
 import com.kinari.kinari.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class AccountService {
     public Account create(AccountRequest request, User user) {
         Account account = new Account();
         account.setName(request.getName());
-        account.setBalance(request.getBalance() != null ? request.getBalance() : 0.0);
+        account.setBalance(request.getBalance() != null ? request.getBalance() : BigInteger.ZERO);
         account.setUser(user);
         return accountRepository.save(account);
     }

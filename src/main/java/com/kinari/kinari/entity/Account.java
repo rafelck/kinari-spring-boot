@@ -2,6 +2,9 @@ package com.kinari.kinari.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 @Entity
 public class Account {
 
@@ -11,7 +14,7 @@ public class Account {
 
     private String name;
 
-    private Double balance = 0.0;
+    private BigInteger balance;
 
     private boolean deleted = false;
 
@@ -35,11 +38,11 @@ public class Account {
         this.name = name;
     }
 
-    public Double getBalance() {
+    public BigInteger getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigInteger balance) {
         this.balance = balance;
     }
 
