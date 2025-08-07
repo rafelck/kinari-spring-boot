@@ -12,6 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/categories-transactions")
@@ -53,9 +54,13 @@ public class CategoryTransactionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCategory(@PathVariable Long id, @AuthenticationPrincipal User user) {
-        categoryTransactionService.softDelete(id, user);
-        return ResponseEntity.ok("Kategori berhasil dihapus");
+    public ResponseEntity<Map<String, String>> deleteCategory(@PathVariable Long id, @AuthenticationPrincipal User user) {
+        try {
+            categoryTransactionService.softDelete(id, user);
+            return ResponseEntity.ok(Map.of("message", "Delete successfully"));
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Not found"));
+        }
     }
 
 }
